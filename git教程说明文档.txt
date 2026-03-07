@@ -1,0 +1,73 @@
+# 添加远程仓库地址（替换为你的GitCode仓库URL）
+git remote add origin https://gitcode.com/Aiya01/note.git
+
+# 推送代码到远程仓库
+git push -u origin main
+
+git@github.com:Aiya01/note.git
+git remote set-url origin https://gitcode.com/Aiya01/note.git
+
+git remote add origin https://github.com/Aiya01/note.git
+git push -u origin main
+
+
+git remote set-url git@github.com:Aiya01/note.git
+
+git fetch note
+git merge --allow-unrelated-histories note/main
+
+
+
+#生成ssh秘钥
+ssh-keygen -t rsa -b 4096 -C "ay__01@163.com"
+
+echo "# note" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:Aiya01/note.git
+git push -u origin main
+
+
+git remote add origin git@github.com:Aiya01/note.git
+git branch -M main
+git push -u origin main
+
+
+#新建并写入
+echo "你好" >> cs.txt
+#初始化
+git init
+#添加全部内容到缓存（指定文件git add AA.txt）
+git add .
+#添加备注信息
+git commit -m "Number 5"
+#切换分支（看路径后的字样，可以选择不切换）
+git branch -M main
+#设置上传地址（需要已经配置用户名、邮箱、SSH）
+git remote add origin git@github.com:Aiya01/note.git
+#确定上传到指定分支
+git push -u origin main
+
+#从源获取内容，合并到本地当前文件（零散的文件）
+git pull https://github.com/Aiya01/note.git
+#默认获取当前配置的最新内容
+git pull
+
+#从源获取内容，打包合并放到当前文件夹下（单个文件夹）
+git clone https://github.com/Aiya01/note.git
+
+
+## 一般的（第二次及以上）
+#获取更新同步仓库新内容
+git pull
+
+#上传内容
+git add .
+git commit -m "上传内容"
+git remote add origin git@github.com:Aiya01/note.git
+git push -u origin main
+
+#验证当前内容，（红色部分是可选但未选的）
+git status
