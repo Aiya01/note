@@ -66,7 +66,6 @@ git pull
 #上传内容
 git add .
 git commit -m "上传内容"
-git remote add origin git@github.com:Aiya01/note.git
 git push -u origin main
 
 #验证当前内容，（红色部分是可选但未选的）
