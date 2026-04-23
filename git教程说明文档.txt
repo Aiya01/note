@@ -1,0 +1,277 @@
+# 添加远程仓库地址（替换为你的GitCode仓库URL）
+git remote add origin https://gitcode.com/Aiya01/note.git
+
+# 推送代码到远程仓库
+git push -u origin main
+
+git@github.com:Aiya01/note.git
+git remote set-url origin https://gitcode.com/Aiya01/note.git
+
+git remote add origin https://github.com/Aiya01/note.git
+git push -u origin main
+
+
+git remote set-url git@github.com:Aiya01/note.git
+
+git fetch note
+git merge --allow-unrelated-histories note/main
+
+
+
+#生成ssh秘钥
+ssh-keygen -t rsa -b 4096 -C "ay__01@163.com"
+存储地址（回车跳过）>>结束输入？（y）>>输入密码（回车跳过）>>重复密码（回车跳过）
+
+查看生成的公钥内容
+cat ~/.ssh/id_rsa.pub
+（复制内容并添加到github用户设置的秘钥里面）
+
+
+echo "# note" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:Aiya01/note.git
+git push -u origin main
+
+
+git remote add origin git@github.com:Aiya01/note.git
+git branch -M main
+git push -u origin main
+
+##安全的命令##
+#检查分支名称
+git branch
+git branch -a
+#验证当前内容，（红色部分是可选但未选的）
+git status
+
+
+#更新本地 master 分支到 main
+git branch -m master main
+
+
+#新建并写入
+echo "你好" >> cs.txt
+#初始化
+git init
+#添加全部内容到缓存（指定文件git add AA.txt）
+git add .
+#添加备注信息
+git commit -m "Number 5"
+#切换分支（看路径后的字样，可以选择不切换）
+git branch -M main
+#设置上传地址（需要已经配置用户名、邮箱、SSH）
+git remote add origin git@github.com:Aiya01/note.git
+#确定上传到指定分支
+git push -u origin main
+
+#从源获取内容，打包好放到当前文件夹下（单个文件夹）
+git clone https://github.com/Aiya01/note.git
+
+#从源获取内容，合并到本地当前文件（零散的文件）
+git pull https://github.com/Aiya01/note.git
+#默认获取当前配置的最新内容
+git pull
+
+
+
+## 一般的（第二次及以上）
+#获取更新同步仓库新内容
+git pull
+
+#上传内容
+git add .
+git status
+git commit -m "上传内容"
+git push -u origin main
+
+
+
+##拉取报错##
+你本地对某些文件做了修改（未 git add 和 git commit）。
+同时，远程仓库中这些文件已被其他人修改并提交。
+暂存本地更改
+git stash
+‌拉取远程最新代码‌
+git pull
+‌恢复暂存的修改‌
+git stash pop
+直接丢弃所有本地更改并强制同步远程‌
+git reset --hard
+git pull
+
+
+
+
+
+
+##错误与处理##
+You do not have the initial commit yet
+
+这句话的中文意思是：你还没有进行初始提交。
+
+当你在使用 Git 时遇到 "You do not have the initial commit yet" 错误，通常是因为当前仓库尚未执行过首次 git commit，但你尝试执行了依赖提交历史的操作，例如 git stash、git pull 或查看 HEAD 日志等。Git 在没有初始提交的情况下，HEAD 指针没有指向任何提交记录，因此无法执行这些操作。
+
+常见场景与解决方法
+‌新初始化的仓库‌：刚运行 git init，但未添加文件并提交。
+‌尝试暂存更改‌：执行 git stash 时，工作区无提交历史。
+‌拉取远程内容‌：执行 git pull 前未建立本地提交。
+解决步骤
+‌确认当前状态‌
+运行 git status，如果显示 Initial commit 且无文件待提交，说明仓库为空。
+
+‌添加文件并提交‌
+
+将文件加入暂存区：git add .
+执行首次提交：git commit -m "Initial commit"
+‌验证提交成功‌
+提交后，再运行 git branch -a 或 git log，应能正常显示分支和提交历史。
+
+‌后续操作‌
+此时即可安全执行 git stash、git pull 等操作。
+
+
+
+
+
+
+
+
+
+
+错误消息 "remote origin already exists"，这意味着你的本地仓库已经有一个名为 origin 的远程仓库配置了。如果你想更改这个远程仓库的 URL 或者添加一个新的远程仓库，你可以按照以下步骤操作：
+
+1. 查看当前远程仓库
+首先，你可以查看当前所有配置的远程仓库，使用命令：
+git remote -v
+这将列出所有远程仓库及其对应的 URL。
+2. 更改远程仓库的 URL
+如果你想要更改已经存在的远程仓库 origin 的 URL，可以使用以下命令：
+git remote set-url origin 新URL
+将 新URL 替换为你想要设置的新的远程仓库地址。
+
+3. 添加一个新的远程仓库
+如果你想要添加一个新的远程仓库而不是更改现有的，你可以使用以下命令：
+
+bash
+git remote add 新名称 新URL
+例如，如果你想添加一个新的远程仓库叫做 new-origin：
+
+bash
+git remote add new-origin 新URL
+4. 删除一个远程仓库
+如果你想要删除一个远程仓库配置，可以使用：
+
+bash
+git remote remove 名称
+例如，删除名为 origin 的远程仓库：
+
+bash
+git remote remove origin
+然后你可以重新添加一个新的 origin。
+
+5. 推送更改到新的远程仓库
+在更改或添加远程仓库后，确保你的本地更改已经提交，然后推送到新的远程仓库：
+
+bash
+git push -u 新名称 分支名
+例如，如果你将新的远程仓库命名为 new-origin，并且你想要推送到主分支：
+
+bash
+git push -u new-origin main
+
+
+
+
+这个错误提示 ‌“Please specify which branch you want to merge with.”‌ 出现在执行 git pull 时，根本原因是 ‌当前本地分支没有设置与远程分支的跟踪关系（tracking relationship）‌。
+
+常见原因
+你刚创建了一个新本地分支，但尚未推送到远程仓库。
+你切换到了一个本地分支，该分支在远程存在，但本地未配置跟踪信息。
+你从远程拉取了代码，但当前分支未关联任何远程分支。
+解决方法
+根据当前情况，有以下两种主流解决方案：
+
+✅ 情况一：远程存在同名分支
+‌确认远程分支是否存在‌
+git ls-remote --heads origin
+‌设置本地分支跟踪远程分支‌
+git branch --set-upstream-to=origin/<远程分支名> <本地分支名>
+如果当前就在目标分支，可简化为：
+
+bash
+git branch --set-upstream-to=origin/<分支名>
+‌验证是否设置成功‌
+
+bash
+git branch -vv
+输出中应显示类似 origin/<分支名> 的跟踪信息。
+
+‌现在可以正常执行 git pull‌
+
+bash
+git pull
+✅ 情况二：远程不存在该分支（本地是新分支）
+‌将本地分支推送到远程，并建立跟踪关系‌
+
+bash
+git push --set-upstream origin <本地分支名>
+或简写为：
+
+bash
+git push -u origin <分支名>
+‌推送成功后，即可直接使用 git pull‌
+
+bash
+git pull
+补充说明
+如果你不确定当前所在分支，可运行：
+
+bash
+git branch
+当前分支前会标有 *。
+
+如果你只是想临时拉取某个远程分支（不设置跟踪），可以直接指定：
+
+bash
+git pull origin <远程分支名>
+推荐使用 --set-upstream-to 而非旧版的 --set-upstream，因为后者已被弃用 ‌
+4
+7。
+
+
+当你在使用 Git 推送更改到 GitHub 仓库时遇到错误 "failed to push some refs to 'github.com:Aiya01/note.git' error: failed"，通常是因为以下几个原因：
+
+‌权限问题‌：
+
+确保你有足够的权限向该仓库推送更改。如果你是仓库的合作者或者拥有者，通常没有问题。如果不是，你可能需要仓库所有者授予你推送权限。
+‌远程分支不存在‌：
+
+当你尝试推送到一个不存在的远程分支时，会出现这个错误。例如，如果你尝试推送到一个新分支，而该分支在远程仓库中尚未创建，你会需要先在远程创建该分支。可以使用以下命令：
+bash
+git push --set-upstream origin <branch-name>
+其中 <branch-name> 是你想要推送的分支名。
+‌HTTPS 和 SSH 配置问题‌：
+
+如果你使用的是 HTTPS URL 来推送，确保你的 Git 配置中包含了正确的凭证。你可以通过以下命令设置凭证帮助器：
+bash
+git config --global credential.helper store
+然后再次推送，系统会提示你输入 GitHub 的用户名和密码。
+如果你使用的是 SSH，确保你的 SSH 密钥已经添加到 GitHub 账户中，并且你的 SSH 客户端已正确配置。你可以通过运行 ssh -T git@github.com 来测试 SSH 连接。
+‌本地仓库状态问题‌：
+
+确保你的本地仓库是最新的。在推送之前，先拉取最新的更改并合并：
+bash
+git pull origin <branch-name>
+解决可能的合并冲突后，再次尝试推送。
+‌网络问题‌：
+
+检查你的网络连接，确保你的设备可以访问 GitHub。有时候网络问题或者 VPN/代理设置可能会阻止 Git 操作。
+‌查看详细的错误信息‌：
+
+使用更详细的日志来获取错误信息：
+bash
+git push origin <branch-name> --verbose
+这可以提供更多关于为什么推送失败的线索。
