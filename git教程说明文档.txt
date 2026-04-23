@@ -75,6 +75,12 @@ git pull https://github.com/Aiya01/note.git
 #默认获取当前配置的最新内容
 git pull
 
+#特殊
+git remote -v
+两条结果，没有需设置仓库地址
+git remote add origin git@github.com:Aiya01/note.git
+
+
 
 
 ## 一般的（第二次及以上）
@@ -275,3 +281,56 @@ git pull origin <branch-name>
 bash
 git push origin <branch-name> --verbose
 这可以提供更多关于为什么推送失败的线索。
+
+
+
+
+
+
+
+
+遇到 "fatal: 'origin' does not appear to be a git repository fatal: Could not read" 这个错误通常意味着 Git 无法正确识别或连接到名为 'origin' 的远程仓库。这可能是由以下几个原因引起的：
+
+‌远程仓库未配置‌：在你的本地 Git 仓库中，可能还没有配置远程仓库的 URL。
+‌远程仓库 URL 错误或不可访问‌：远程仓库的 URL 可能不正确，或者由于网络问题导致无法访问。
+‌.git/config 文件损坏‌：Git 配置文件（通常位于 .git/config）可能已损坏或不正确。
+解决步骤
+1. 检查远程仓库是否已配置
+打开终端，切换到你的 Git 仓库目录，然后运行以下命令来检查远程仓库是否已配置：
+
+bash
+git remote -v
+这将列出所有远程仓库及其 URL。如果没有看到 'origin'，你需要添加它。
+
+2. 添加远程仓库
+如果 origin 没有配置，你可以使用以下命令添加它：
+
+bash
+git remote add origin <repository-url>
+将 <repository-url> 替换为你的远程仓库 URL。例如：
+
+bash
+git remote add origin https://github.com/username/repository.git
+3. 验证远程仓库 URL
+如果你已经配置了 origin，确保 URL 是正确的。可以这样检查和更新：
+
+bash
+git remote set-url origin <new-repository-url>
+4. 检查网络连接
+确保你的网络连接正常，可以访问远程仓库的 URL。
+
+5. 检查 .git/config 文件
+查看 .git/config 文件是否正确无误。这个文件应该包含类似以下内容：
+
+ini
+[remote "origin"]
+    url = https://github.com/username/repository.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+如果文件损坏，尝试重新克隆仓库到新目录，或者手动修复 .git/config 文件。
+
+6. 重新克隆仓库
+如果以上步骤都不行，尝试重新克隆仓库到另一个目录：
+
+bash
+git clone <repository-url> new-directory-name
+这将创建一个新的克隆，可能有助于解决配置问题。
