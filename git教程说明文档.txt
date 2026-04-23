@@ -80,6 +80,7 @@ git remote -v
 两条结果，没有需设置仓库地址
 git remote add origin git@github.com:Aiya01/note.git
 
+git pull origin main
 
 
 
@@ -109,8 +110,10 @@ git reset --hard
 git pull
 
 
+设置跟踪信息
+git branch --set-upstream-to=origin/main main
 
-
+git pull origin main --allow-unrelated-histories 
 
 
 ##错误与处理##
@@ -137,6 +140,7 @@ You do not have the initial commit yet
 
 ‌后续操作‌
 此时即可安全执行 git stash、git pull 等操作。
+
 
 
 
