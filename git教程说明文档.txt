@@ -3,14 +3,18 @@
 git init
 #从源获取内容，合并到本地当前文件夹（零散的文件，此处不重名文件也可以保存到当前目录下）
 git pull https://github.com/Aiya01/note.git
-将副本文件替换到当前文件（相当于在最新版文件上修改，违规偷标上车）
+#将副本文件替换到当前文件（相当于在最新版文件上修改，违规偷标上车）
 #切换分支（看路径后的字样，需不需要不切换，第一次需要）
 git branch -M main
-#验证当前内容（红色项未选，绿色项已选，没有红绿色无修改，此处应该没有是没有绿色的）
+#查询仓库
+git remote -v
+#两条结果，没有需设置仓库地址
+git remote add origin git@github.com:Aiya01/note.git
+#验证当前内容（红色项未选，绿色项已选，没有红绿色无修改，此处应该是红色的）
 git status
 #添加全部文件到待传（将点替换为带后缀文件名可以指定）
 git add .
-#验证当前内容（绿色为待传）
+#验证当前内容（前面红色转为绿色，绿色为待传）
 git status
 #上传信息备注（建议有）
 git commit -m "上传内容"
@@ -120,6 +124,7 @@ git pull https://github.com/Aiya01/note.git
 git pull
 
 #特殊
+查询仓库
 git remote -v
 两条结果，没有需设置仓库地址
 git remote add origin git@github.com:Aiya01/note.git
